@@ -2,16 +2,21 @@ import yargs from 'yargs';
 import Table from 'cli-table';
 import { hideBin } from 'yargs/helpers';
 
-// yargs(hideBin(process.argv))
-//   .command('new <task>', 'Create a new task', yargs => { 
-//     return yargs.positional('task', {
-//         'type':'string',
-//         'description':'the content of your task to create',
-//     })
-//   }, (argv) => console.log(argv.task)
-// )
-// .demandCommand(1)
-// .parse()
+yargs(hideBin(process.argv))
+  .command('new <task>', 'Create a new task', yargs => { 
+    return yargs.positional('task', {
+        'type':'string',
+        'description':'the content of your task to create',
+    })
+  }, (argv) => console.log(argv.task)
+)
+.options('tags',{
+  alias: 't',
+  type: 'string',
+  description: 'tags to add to the note'
+})
+.demandCommand(1)
+.parse()
 
 // instantiate table
 var table = new Table({
